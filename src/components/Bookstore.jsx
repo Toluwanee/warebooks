@@ -1,4 +1,3 @@
-import React from 'react';
 
 const sampleBooks = [
   { title: 'Book 1', author: 'Author 1', price: 10.99 },
