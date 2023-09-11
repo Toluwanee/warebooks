@@ -1,4 +1,3 @@
-
 const sampleBooks = [
   { title: 'Book 1', author: 'Author 1', price: 10.99 },
   { title: 'Book 2', author: 'Author 2', price: 12.99 },
