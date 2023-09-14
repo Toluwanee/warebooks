@@ -1,8 +1,8 @@
 
 import './App.css'
 import Header from './components/Header';
-import PublisherWorkspace from './components/PublisherWorkspace';
-import BookStore from './components/BookStore';
+import PublisherWorkspace from './pages/dashboard/publisher/PublisherWorkSpace';
+import BookStore from './pages/landingpage/bookstore/BookStore';
 import Footer from './components/Footer';
 
 function App() {
