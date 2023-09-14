@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export const Register = () => {
+export const PublisherWorkSpace = () => {
   const [content, setContent] = useState("");
 
   const handleContentChange = (event) => {
@@ -19,3 +19,5 @@ export const Register = () => {
     </div>
   );
 };
+
+export default PublisherWorkSpace;

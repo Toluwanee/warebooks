@@ -1,0 +1,1 @@
+Empty readme meant for the server side of the project documentation

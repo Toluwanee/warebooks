@@ -4,7 +4,7 @@ const sampleBooks = [
     // Add more sample books...
   ];
 
-export const BookStore = () => {
+const BookStore = () => {
     return (
         <div className="my-8">
           <h2 className="text-xl font-semibold mb-4">Bookstore</h2>
@@ -26,3 +26,5 @@ export const BookStore = () => {
         </div>
       );
   }
+
+  export default BookStore;
