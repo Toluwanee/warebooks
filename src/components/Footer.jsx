@@ -1,7 +1,7 @@
 import logo from "../assets/img/wareBook-logo.png";
 import Inlogo from "../assets/img/In-logo-blue.png";
 import Xlogo from "../assets/img/X-logo-black.png";
-import Fblogo from "../assets/img/Fb-logo-blue.png";
+import Gitlogo from "../assets/img/Git-logo-black.png";
 import Iglogo from "../assets/img/Ig-logo-gradient.png";
 
 function Footer() {
@@ -12,7 +12,7 @@ function Footer() {
           <a href="/">
             <img src={logo} alt="wareBook-logo"></img>
           </a>
-          <p>
+          <p className="break-normal w-[256px] items-start">
             wareBooks is a complete Book publication tool for authors, with a
             storefront for published books to be made available to readers
             worldwide
@@ -58,20 +58,20 @@ function Footer() {
         </div>
       </div>
       <div className="flex pt-5 pb-4 justify-center items-center">
-        <a href="/">
+        <a href="https://www.linkedin.com/company/utility-ware/">
           <img className="p-5 h-16 w-16" src={Inlogo} alt="Linked-logo"></img>
         </a>
-        <a href="/">
+        <a href="https://twitter.com/UtilityWareLtd/">
           <img className="p-5 h-16 w-16" src={Xlogo} alt="Linked-logo"></img>
         </a>
-        <a href="/">
-          <img className="p-5 h-16 w-16" src={Fblogo} alt="Linked-logo"></img>
+        <a href="https://github.com/Utility-Ware/">
+          <img className="p-5 h-16 w-16" src={Gitlogo} alt="Linked-logo"></img>
         </a>
-        <a href="/">
+        <a href="https://www.instagram.com/utilityware/">
           <img className="p-5 h-16 w-16" src={Iglogo} alt="Linked-logo"></img>
         </a>
       </div>
-      <div className="flex p-7 justify-around items-center">
+      <div className="flex pl-7 pr-7 justify-between items-center">
         <div>
           <p>© 2023 wareBooks. All Rights Reserved.</p>
         </div>
