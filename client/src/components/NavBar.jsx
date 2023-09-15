@@ -50,13 +50,10 @@ const NavBar = () => {
         <div>
           <ul className="flex divide-x-2 divide-gray-500 text-[#393280]">
             <li className="p-6">
-              <a href="/">ACCOUNT</a>
+              <a href="/">LOGIN</a>
             </li>
             <li className="p-6">
-              <a href="/">CART:($0)</a>
-            </li>
-            <li className="p-6">
-              <a href="/">WISHLIST</a>
+              <a href="/">REGISTER</a>
             </li>
           </ul>
         </div>
