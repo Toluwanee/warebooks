@@ -1,22 +1,34 @@
+import "./App.css";
+import Home from "./pages/landingpage/home/Home";
+import PublisherWorkspace from "./pages/dashboard/publisher/PublisherWorkSpace";
+import BookStore from "./pages/landingpage/bookstore/BookStore";
+import Login from "./pages/auth/login/Login";
+import Register from "./pages/auth/register/Register";
+import LandingPageLayout from "./components/LandingPageLayout";
+import { Contact } from "./pages/landingpage/contact/Contact";
+import { About } from "./pages/landingpage/about/About";
+import { NotFound } from "./pages/errors/notfound/NotFound";
+import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } from "react-router-dom";
 
-import './App.css'
-import NavBar from './components/NavBar';
-import PublisherWorkspace from './pages/dashboard/publisher/PublisherWorkSpace';
-import BookStore from './pages/landingpage/bookstore/BookStore';
-import Footer from './components/Footer';
+const router = createBrowserRouter(
+  createRoutesFromElements(
+    <>
+      <Route path="/" element={<LandingPageLayout />}>
+        <Route index element={<Home />} />
+        <Route path="contact" element={<Contact />} />
+        <Route path="about" element={<About />} />
+        <Route path="about" element={<PublisherWorkspace />} />
+        <Route path="about" element={<BookStore />} />
+        <Route path="*" element={<NotFound />} />
+      </Route>
 
+      <Route path="/auth/login" element={<Login />} />
+      <Route path="/auth/register" element={<Register />} />
+    </>
+  )
+);
 function App() {
-  return (
-    <div className="bg-gray-300 min-h-screen">
-      <NavBar />
-      {/* <div className="container mx-auto">
-        <PublisherWorkspace />
-        <BookStore />
-      </div> */}
-      {/* <Footer /> */}
-    </div>
-  );
+  return <RouterProvider router={router} />;
 }
 
-
-export default App
+export default App;
