@@ -1,44 +1,77 @@
-import { Link } from 'react-router-dom'
+import React, { useState } from "react";
 
-const Login = () => {
+export default function Login() {
+  const [formData, setFormData] = useState({ 
+    user: {
+      username: "", 
+      password: "" 
+    },
+  });
+
+  const handleChange = (e) => {
+    setFormData({
+      user: {
+        ...formData.user,
+        [e.target.name]: e.target.value,
+      },
+    });
+  };
+
   return (
-    <div>
-        <div className='bg-slate-800 border border-slate-400 rounded-md p-8 shadow-lg backdrop-flter backdrop-blur-sm bg-opacity-30 relative' > 
-          <h1 className='text-4xl text-whitefont-bold text-center mb-6'>Login</h1>
-          <form action=''>
-          <div className='relative my-4'>
-              <input type="email" className='block w-72 py-2.3 px-0 text-sm text-white bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:focus:border-blue-500 
-              focus:outline-none focus:ring-0 focus-text-white focus-border-blue-600 peer' placeholder=''/>
-              <label htmlFor="" className='absolute text-sm text-white duration-300 transform -translate-y-6 scale-75 top-1 -z-10 origin-[0] peer-focus:left-0 
-              peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 
-              peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6'>Your Email</label>
-          </div>
-          <div  className='relative my-4'>
-              <input type="password" className='block w-72 py-2.3 px-0 text-sm text-white bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:focus:border-blue-500 
-              focus:outline-none focus:ring-0 focus-text-white focus-border-blue-600 peer' placeholder=''/>
-              <label htmlFor="" className='absolute text-sm text-white duration-300 transform -translate-y-6 scale-75 top-1 -z-10 origin-[0] peer=focus:left-0 
-              peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 
-              peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6'>Your Password</label>
-          </div>
-          <div>
-            <div>
-              <input type="checkbox" name="" id=""/>
-              <label htmlFor="Remember Me"></label>
-            </div>
-              <span>Forgot Password?</span>
-          </div>
-          <button className='w-full mb-4 text-[18px] mt-6 rounded-full bg-white text-emerald-800 
-          hover:bg-emerald-600 hover:text-white py-2 transition-colors duration-300'  type="submit">Login</button>
-          <div>
-
-          
-
-            <span>New Here?  <Link to='Register'></Link> </span>
-          </div>
-          </form>
+    <figure className="h-screen flex bg-gray-100">
+      <div className="w-full max-w-md m-auto bg-white rounded-lg border border-primaryBorder shadow-default py-10 px-1">
+        <blockquote className="text-2xl font-medium text-center">
+          <p className="text-lg font-semibold">Welcome to My-App</p>
+        </blockquote>
+        
+        <div className="text-primary m-6">
+      <div className="flex items-center mt-3 justify-center">
+        <h1 className="text-2xl font-medium text-primary mt-4 mb-2">
+          Login to your account
+        </h1>
+      </div>
+      <form>
+        <label className="text-left">Username:</label>
+        <input
+          name="username"
+          type="text"
+          value={formData.user.username}
+          onChange={handleChange}
+          placeholder="Username"
+          className={
+            "w-full p-2 text-primary border rounded-md outline-none text-sm transition duration-150 ease-in-out mb-4"
+          }
+        />
+        <label>Password:</label>
+        <input
+          name="password"
+          type="password"
+          value={formData.user.password}
+          onChange={handleChange}
+          placeholder="Password"
+          className={
+            "w-full p-2 text-primary border rounded-md outline-none text-sm transition duration-150 ease-in-out mb-4"
+          }
+        />
+        <div className="flex items-center mt-3 justify-center">
+          <button
+            className={
+              "bg-blue-700 hover:bg-blue-500 py-2 px-4 text-md text-white rounded border border-blue focus:outline-none focus:border-black"
+            }
+            value="Login"
+          >
+            Login
+          </button>
         </div>
+      </form>
+      <div className="flex items-center mt-3 justify-center">
+      <button className={"justify-center text-blue-500 hover:underline"}>
+        Need to register? Sign up for free
+      </button>
+      </div>
     </div>
-  )
+        
+      </div>
+    </figure>
+  );
 }
-
-export default Login

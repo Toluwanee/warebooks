@@ -4,7 +4,7 @@ import { Outlet } from 'react-router-dom';
 
 const LandingPageLayout = () => {
   return (
-    <div>
+    <div className='flex flex-col min-h-scree'>
       <Header/>
       <Outlet/>
       <Footer/>
