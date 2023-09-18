@@ -59,20 +59,20 @@ const NavBar = () => {
 
         <div className="flex justify-between items-center w-full max-sm:w-auto  bg-white px-4 h-auto">
           <a href="/">
-            <img src={logo} alt="wareBook-logo" className="max-sm:w-26 max-sm:h-8"></img>
+            <img
+              src={logo}
+              alt="wareBook-logo"
+              className="max-sm:w-26 max-sm:h-8"
+            ></img>
           </a>
           <SearchComponent />
           <div>
             <ul className="flex divide-x-2 divide-gray-500 max-sm:text-xs text-[#393280]">
               <li className="p-6 max-sm:p-1">
-                <NavLink to="login">
-                  LOGIN
-                  </NavLink>
+                <NavLink to="login">LOGIN</NavLink>
               </li>
               <li className="p-6 max-sm:p-1">
-                <NavLink to="register">
-                  REGISTER
-                  </NavLink>
+                <NavLink to="register">REGISTER</NavLink>
               </li>
             </ul>
           </div>
@@ -86,16 +86,10 @@ const NavBar = () => {
           <div className="flex items-center justify-center max-sm:text-xs">
             <ul className="flex justify-center divide-x-2 divide-gray-500">
               <li className="p-8 max-sm:p-2">
-                {/* <a href="/">HOME</a> */}
-                <NavLink to="/">
-              Home
-                </NavLink>
+                <NavLink to="/">Home</NavLink>
               </li>
               <li className="p-8 max-sm:p-2">
-              <NavLink to="/about">
-              ABOUT
-                </NavLink>
-                {/* <a href="/">ABOUT</a> */}
+                <NavLink to="about">ABOUT</NavLink>
               </li>
               <li className="p-8 max-sm:p-2">
                 <a href="/">PUBLISHER</a>
@@ -104,9 +98,7 @@ const NavBar = () => {
                 <a href="/">BOOKSTORE</a>
               </li>
               <li className="p-8 max-sm:p-2">
-                <NavLink to="/contact">
-                  CONTACT
-                  </NavLink>
+                <NavLink to="contact">CONTACT</NavLink>
               </li>
               <li className="p-8 max-sm:p-2">
                 <a href="/">BLOG</a>
