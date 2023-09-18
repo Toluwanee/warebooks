@@ -1,6 +1,9 @@
+import Slider from '../../../components/HomeSlider'
 const Home = () => {
     return (
-      <div>Home</div>
+      <div><section>
+        <Slider/>
+        </section></div>
     )
   }
 

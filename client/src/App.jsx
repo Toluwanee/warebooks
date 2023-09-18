@@ -8,7 +8,12 @@ import LandingPageLayout from "./components/LandingPageLayout";
 import { Contact } from "./pages/landingpage/contact/Contact";
 import { About } from "./pages/landingpage/about/About";
 import { NotFound } from "./pages/errors/notfound/NotFound";
-import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } from "react-router-dom";
+import {
+  Route,
+  RouterProvider,
+  createBrowserRouter,
+  createRoutesFromElements,
+} from "react-router-dom";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -20,10 +25,9 @@ const router = createBrowserRouter(
         <Route path="about" element={<PublisherWorkspace />} />
         <Route path="about" element={<BookStore />} />
         <Route path="*" element={<NotFound />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
       </Route>
-
-      <Route path="/auth/login" element={<Login />} />
-      <Route path="/auth/register" element={<Register />} />
     </>
   )
 );
