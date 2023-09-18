@@ -2,14 +2,14 @@ export const About = () => {
     return (
       <div>
         <h1><strong>About</strong></h1>
-        <p>
+        <div>
         At Utility Ware Ltd, 
         we are on a mission to address a pressing issue that has been affecting the literary landscape in Nigeria and across the African continent. 
         Our journey began with the recognition of a significant problem: 
         the lack of a dedicated digital publishing platform and marketplace tailored to the needs of indigenous writers and authors. 
         In response to this challenge, 
         we are excited to introduce our innovative solution, WareBook.
-        </p>
+        </div>
 
         <br />
         <h1><strong>The Problem</strong></h1>
@@ -53,9 +53,6 @@ For readers, Ware Book will offer a storefront where they can purchase and acces
         To achieve this, we are harnessing the power of cutting-edge technologies. Our development stack includes Reactjs, and Nodejs for the backend, react for the frontend, and postgress for the database.
          We are also committed to continuous learning and improvement to ensure the highest levels of data security and user satisfaction.
         </p>
-
-        
-
 
         </div>
     )
