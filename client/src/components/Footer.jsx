@@ -9,21 +9,21 @@ const Footer = () => {
   return (
     <footer className="bg-gradient-to-r mt-auto colgrad">
       <div className="flex">
-        <div className="p-10 pl-10 max-sm:pl-2 max-sm:p-2 w-1/3 max-sm:w-auto max-sm:text-xs">
-          <a href="/">
+        <div className="p-10 pl-10 max-sm:pl-2 max-sm:p-2 w-1/3 max-sm:w-auto text-sm max-sm:text-xs">
+          <Link to="/">
             <img
               className="max-sm:w-26 max-sm:h-8"
               src={logo}
               alt="wareBook-logo"
-            ></img>
-          </a>
+            />
+          </Link>
           <p className="break-normal w-[256px] max-sm:w-auto items-start ">
             wareBooks is a complete Book publication tool for authors, with a
             storefront for published books to be made available to readers
             worldwide
           </p>
         </div>
-        <div className="justify-start items-start w-1/3 max-sm:w-auto max-sm:text-xs">
+        <div className="justify-start items-start w-1/3 max-sm:w-auto text-sm max-sm:text-xs">
           <h1 className="p-9 max-sm:p-3">COMPANY</h1>
           <nav className="">
             <ul className="flex flex-col">
@@ -42,7 +42,7 @@ const Footer = () => {
             </ul>
           </nav>
         </div>
-        <div className="justify-start items-start w-1/3 max-sm:w-auto max-sm:text-xs">
+        <div className="justify-start items-start w-1/3 max-sm:w-auto text-sm max-sm:text-xs">
           <h1 className="p-9 max-sm:p-3">COMPANY</h1>
           <nav className="">
             <ul className="flex flex-col">
@@ -92,7 +92,7 @@ const Footer = () => {
           ></img>
         </a>
       </div>
-      <div className="pl-7 pr-7 hidden md:flex sm:hidden justify-between items-center max-sm:text-xs">
+      <div className="pl-7 pr-7 hidden md:flex sm:hidden justify-between items-center text-sm max-sm:text-xs">
         <div>
           <p>© 2023 wareBooks. All Rights Reserved.</p>
         </div>

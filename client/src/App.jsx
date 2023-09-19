@@ -26,12 +26,12 @@ const router = createBrowserRouter(
         <Route path="about" element={<About />} />
         <Route path="about" element={<PublisherWorkspace />} />
         <Route path="about" element={<BookStore />} />
-        <Route path="*" element={<NotFound />} />
         <Route path="login" element={<Login />} />
         <Route path="register" element={<Register />} />
         <Route path="privacypolicy" element={<PrivacyPolicy />} />
         <Route path="termsofservice" element={<TermsOfService />} />
       </Route>
+      <Route path="*" element={<NotFound />} />
     </>
   )
 );

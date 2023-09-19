@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+// import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
-import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
+// import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
 import logo from "../assets/img/wareBook-logo.png";
 import Inlogo from "../assets/img/In-logo-white.png";
 import Xlogo from "../assets/img/X-logo-white.png";
@@ -9,22 +9,22 @@ import Iglogo from "../assets/img/Ig-logo-white.png";
 import SearchComponent from "./SearchComponent";
 
 const NavBar = () => {
-  const [nav, setNav] = useState(false);
+  // const [nav, setNav] = useState(false);
 
-  const handleNav = () => {
-    setNav(!nav);
-  };
+  // const handleNav = () => {
+  //   setNav(!nav);
+  // };
 
   return (
     <section>
       <nav className="flex flex-col justify-between items-center max-container">
         <div className="flex justify-between items-center w-full bg-[#393280] h-auto lg:h-[46px] px-4 py-2">
-          <a
-            className="text-1xl text-base max-sm:text-xs p-2 text-white"
-            href="tel:+234 701 312 3835"
+          <Link
+            className="text-1xl text-sm max-sm:text-xs p-2 text-white"
+            to="tel:+234 701 312 3835"
           >
             +234 701 312 3835
-          </a>
+          </Link>
           <div className="flex">
             <a href="https://www.linkedin.com/company/utility-ware/">
               <img
@@ -57,21 +57,21 @@ const NavBar = () => {
           </div>
         </div>
 
-        <div className="flex justify-between items-center w-full max-sm:w-auto  bg-white px-4 h-auto">
-          <a href="/">
+        <div className="flex justify-between items-center w-full max-sm:w-auto  bg-white px-4 h-min">
+          <Link to="/">
             <img
               src={logo}
               alt="wareBook-logo"
               className="max-sm:w-26 max-sm:h-8"
-            ></img>
-          </a>
+            />
+          </Link>
           <SearchComponent />
           <div>
-            <ul className="flex divide-x-2 divide-gray-500 max-sm:text-xs text-[#393280]">
-              <li className="p-6 max-sm:p-1">
+            <ul className="flex divide-x-2 divide-gray-500 text-sm max-sm:text-xs text-[#393280]">
+              <li className="px-2 max-sm:p-1">
                 <NavLink to="login">LOGIN</NavLink>
               </li>
-              <li className="p-6 max-sm:p-1">
+              <li className="px-2 max-sm:p-1">
                 <NavLink to="register">REGISTER</NavLink>
               </li>
             </ul>
@@ -83,24 +83,24 @@ const NavBar = () => {
         </div>
 
         <div className="flex justify-center items-center bg-white w-full h-auto px-4">
-          <div className="flex items-center justify-center max-sm:text-xs">
+          <div className="flex items-center justify-center text-sm max-sm:text-xs">
             <ul className="flex justify-center divide-x-2 divide-gray-500">
-              <li className="p-8 max-sm:p-2">
+              <li className="px-8 py-4 max-sm:p-2">
                 <NavLink to="/">Home</NavLink>
               </li>
-              <li className="p-8 max-sm:p-2">
+              <li className="px-8 py-4 max-sm:p-2">
                 <NavLink to="about">ABOUT</NavLink>
               </li>
-              <li className="p-8 max-sm:p-2">
+              <li className="px-8 py-4 max-sm:p-2">
                 <a href="/">PUBLISHER</a>
               </li>
-              <li className="p-8 max-sm:p-2">
+              <li className="px-8 py-4 max-sm:p-2">
                 <a href="/">BOOKSTORE</a>
               </li>
-              <li className="p-8 max-sm:p-2">
+              <li className="px-8 py-4 max-sm:p-2">
                 <NavLink to="contact">CONTACT</NavLink>
               </li>
-              <li className="p-8 max-sm:p-2">
+              <li className="px-8 py-4 max-sm:p-2">
                 <a href="/">BLOG</a>
               </li>
             </ul>

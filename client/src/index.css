@@ -5,5 +5,8 @@
 @layer utilities {
     .colgrad {
         @apply bg-gradient-to-r from-[#FFE5E5] via-[#F5FFFE] via-[#FCF3FF] to-[#FFF4E5]
+        
     }
 }
+    
+
