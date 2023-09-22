@@ -7,10 +7,10 @@ import Iglogo from "../assets/img/Ig-logo-gradient.png";
 
 const Footer = () => {
   return (
-    <footer className="bg-gradient-to-r mt-auto colgrad">
+    <footer className="bg-[#393280]">
       <div className="flex">
         <div className="p-10 pl-10 max-sm:pl-2 max-sm:p-2 w-1/3 max-sm:w-auto text-sm max-sm:text-xs">
-          <Link to="/">
+          <Link to="/" className="bg-white">
             <img
               className="max-sm:w-26 max-sm:h-8"
               src={logo}
