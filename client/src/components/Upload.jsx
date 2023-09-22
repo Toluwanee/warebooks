@@ -3,14 +3,20 @@ import React, { useState } from 'react';
 function PublishPage() {
   const [bookTitle, setBookTitle] = useState('');
   const [authorName, setAuthorName] = useState('');
+  const [bookOverview, setOverviewName] = useState('');
   const [file, setFile] = useState(null);
+  const [bookCover, setbookCover] = useState(null);
 
   const handleTitleChange = (e) => {
     setBookTitle(e.target.value);
   };
-
+  
   const handleAuthorChange = (e) => {
     setAuthorName(e.target.value);
+  };
+
+  const handleOverviewChange = (e) => {
+    setOverviewName(e.target.value);
   };
 
   const handleFileChange = (e) => {
@@ -19,11 +25,20 @@ function PublishPage() {
     setFile(selectedFile);
   };
 
+  const handleBookCoverChange = (e) => {
+    // You can handle file uploads here and store the file in your state
+    const selectedFile = e.target.files[0];
+    setbookCover(selectedFile);
+  };
+
+
   const handlePublish = () => {
     // Handle publishing logic here, e.g., sending data to your backend
     console.log('Book Title:', bookTitle);
     console.log('Author Name:', authorName);
+    console.log('Book Overview:', bookOverview);
     console.log('File:', file);
+    console.log('Book Cover:', bookCover);
     // You can make an API request to upload the book and its details to your server.
   };
 
@@ -50,11 +65,29 @@ function PublishPage() {
           />
         </div>
         <div className="mb-4">
+          <label className="block text-sm font-medium text-gray-700">Brief Overview of Book</label>
+          <input
+            type="text"
+            value={bookOverview}
+            onChange={handleOverviewChange}
+            className="w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
+          />
+        </div>
+        <div className="mb-4">
           <label className="block text-sm font-medium text-gray-700">Upload Book (PDF)</label>
           <input
             type="file"
             accept=".pdf"
             onChange={handleFileChange}
+            className="w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
+          />
+        </div>
+        <div className="mb-4">
+          <label className="block text-sm font-medium text-gray-700">Upload Book Cover (.jpg format)</label>
+          <input
+            type="file"
+            accept=".jpg"
+            onChange={handleBookCoverChange}
             className="w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
           />
         </div>
