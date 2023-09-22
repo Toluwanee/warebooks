@@ -86,13 +86,13 @@ const NavBar = () => {
           <div className="flex items-center justify-center text-sm max-sm:text-xs">
             <ul className="flex justify-center divide-x-2 divide-gray-500">
               <li className="px-8 py-4 max-sm:p-2">
-                <NavLink to="/">Home</NavLink>
+                <NavLink to="/">HOME</NavLink>
               </li>
               <li className="px-8 py-4 max-sm:p-2">
                 <NavLink to="about">ABOUT</NavLink>
               </li>
               <li className="px-8 py-4 max-sm:p-2">
-                <a href="/">PUBLISHER</a>
+                <a href="#publisher">PUBLISHER</a>
               </li>
               <li className="px-8 py-4 max-sm:p-2">
                 <a href="/">BOOKSTORE</a>

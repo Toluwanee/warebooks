@@ -17,7 +17,7 @@ const Footer = () => {
               alt="wareBook-logo"
             />
           </Link>
-          <p className="break-normal w-[256px] max-sm:w-auto items-start ">
+          <p className="px-4 text-left w-[256px] max-sm:w-auto">
             wareBooks is a complete Book publication tool for authors, with a
             storefront for published books to be made available to readers
             worldwide
