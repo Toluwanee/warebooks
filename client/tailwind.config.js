@@ -22,7 +22,12 @@ export default {
       },
       backgroundImage: {
         'hero': "url('assets/images/collection-background.svg')",
-        'card': "url('assets/images/thumbnail-background.svg')",
+        'error-card': "url('assets/img/background-error-page.png')",
+        'error-card-mob': "url('assets/img/background-error-page-mobile.png')",
+        'home-section-1': "url('assets/img/lulu-home-main-banner.png')",
+        'home-section-1mobile': "url('assets/img/lulu-home-main-banner-mobile.webp')",
+        'book-types-bg': "url('assets/img/types-books-bg.png')",
+
       },
       screens: {
         "wide": "1440px"
