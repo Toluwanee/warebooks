@@ -1,7 +1,7 @@
-import { useState } from 'react';
+import { useState } from "react";
 
-function PublisherWorkspace() {
-  const [content, setContent] = useState('');
+export const PublisherWorkSpace = () => {
+  const [content, setContent] = useState("");
 
   const handleContentChange = (event) => {
     setContent(event.target.value);
@@ -18,6 +18,6 @@ function PublisherWorkspace() {
       ></textarea>
     </div>
   );
-}
+};
 
-export default PublisherWorkspace;
+export default PublisherWorkSpace;
