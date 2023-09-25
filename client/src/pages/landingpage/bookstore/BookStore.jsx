@@ -1,30 +1,27 @@
-const sampleBooks = [
-    { title: 'Book 1', author: 'Author 1', price: 10.99 },
-    { title: 'Book 2', author: 'Author 2', price: 12.99 },
-    // Add more sample books...
-  ];
+import React, { useState, useEffect } from 'react';
+import Books from '../../../components/books/Books'
 
 const BookStore = () => {
-    return (
-        <div className="my-8">
-          <h2 className="text-xl font-semibold mb-4">Bookstore</h2>
-          <div className="grid grid-cols-2 gap-4">
-            {sampleBooks.map((book, index) => (
-              <div
-                key={index}
-                className="border p-4 rounded shadow hover:shadow-md"
-              >
-                <h3 className="text-lg font-semibold">{book.title}</h3>
-                <p>By {book.author}</p>
-                <p className="mt-2">${book.price.toFixed(2)}</p>
-                <button className="mt-4 bg-blue-500 text-white px-2 py-1 rounded">
-                  Buy Now
-                </button>
-              </div>
-            ))}
-          </div>
-        </div>
-      );
-  }
+  const [books, setBooks] = useState([]);
 
-  export default BookStore;
+  useEffect(() => {
+    // Fetch data from the server
+    fetch('/api/books')
+      .then((response) => response.json())
+      .then((data) => setBooks(data))
+      .catch((error) => console.error('Error fetching data:', error));
+  }, []);
+
+  return (
+    <div className="container mx-auto mt-8">
+      <h1 className="text-3xl font-semibold mb-4">Bookstore</h1>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        {books.map((book, index) => (
+          <Books key={index} book={book} />
+        ))}
+      </div>
+    </div>
+  );
+};
+
+export default BookStore;
