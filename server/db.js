@@ -5,7 +5,7 @@ const pool = new Pool({
     password: '1',
     host: 'localhost',
     port: 5432,
-    database: 'warebooks'
+    database: 'warebooks_users'
 });
 
 module.exports = pool;

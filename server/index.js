@@ -2,12 +2,32 @@ const express = require("express");
 const app = express();
 const cors =  require("cors");
 const pool = require("./db");
+const dotenv = require("dotenv")
+dotenv.config();
+const port = process.env.PORT || 8080;
+
 
 //middleware
 app.use(cors());
 app.use(express.json());
 
+//ROUTES//
 
+
+//CREATE A user
+app.post("/registration", async(req, res) => {
+    try {
+        console.log(req.body);
+        const { firstName, lastName, email, password } = req.body;
+        const newRegistration = await pool.query(
+            "INSERT INTO users (firstName, lastName, email, password) VALUES($1, $2, $3, $4)",
+             [firstName, lastName, email, password]
+             );
+             res.json(newRegistration);
+    } catch (err) {
+        console.error(err.message);
+    }
+});
 
 //Create the db tables for the system
 app.get("/create-tables", async (req, res) => {
@@ -25,28 +45,10 @@ app.get("/create-tables", async (req, res) => {
         console.log(error.message)
     }
 })
+//Update a row
 
-//CREATE A TO DO
-app.post("/registration", async(req, res) => {
-    try {
-        const { name, email, password } = req.body;
-        const newRegistration = await pool.query(
-            "INSERT INTO users (name, email, password) VALUES($1, $2, $3)",
-            [name, email, password]
-            );
+//Delete a row
 
-            res.json(newRegistration)
-    } catch (err) {
-        console.error(err.message);
-    }
-})
-
-
-// GET ALL TOSOS
-//GET A todo
-//Update a todo
-//Delete a todo
-
-app.listen(5001, () => {
-    console.log("server has started on port 5001");
+app.listen(5000, () => {
+    console.log("server has started on port 5000");
 } ) 

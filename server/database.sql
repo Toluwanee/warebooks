@@ -1,9 +1,10 @@
-CREATE DATABASE warebooks;
+CREATE DATABASE warebooks_users;
 
 CREATE TABLE users(
-    user_id SERIAL PRIMARY KEY,
-    name VARCHAR(255) NOT NULL,
+    userID SERIAL PRIMARY KEY,
+    firstName VARCHAR(255) NOT NULL,
+    lastName VARCHAR(255) NOT NULL,
     email VARCHAR(255) NOT NULL,
     password VARCHAR(255) NOT NULL,
-    date_created DEFAULT NOW()
+    dateCreated TIMESTAMP DEFAULT NOW() 
 );
