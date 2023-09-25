@@ -2,12 +2,18 @@ const express = require("express");
 const app = express();
 const cors =  require("cors");
 const pool = require("./db");
+const port = process.env.PORT || 5001;
+
+// Import book data
+const bookData = require('./data/BookData');
 
 //middleware
 app.use(cors());
 app.use(express.json());
 
-
+app.get('/api/books', (req, res) => {
+    res.json(bookData);
+  });
 
 //Create the db tables for the system
 app.get("/create-tables", async (req, res) => {
@@ -47,6 +53,7 @@ app.post("/registration", async(req, res) => {
 //Update a todo
 //Delete a todo
 
-app.listen(5001, () => {
-    console.log("server has started on port 5001");
-} ) 
+app.listen(port, () => {
+    console.log(`Server is running on port ${port}`);
+  });
+  
