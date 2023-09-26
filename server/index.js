@@ -1,19 +1,22 @@
-const express = require("express");
-const app = express();
-const cors =  require("cors");
-const pool = require("./db");
-const dotenv = require("dotenv");
-const bcrypt = require('bcrypt');
-dotenv.config();
-const port = process.env.PORT || 8080;
+import express from "express";
+import cors from "cors";
+import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
+import sql from "./db.js";
 
+const app = express();
+const port = process.env.PORT || 5001;
+
+// Import book data
+const bookData = require('./data/BookData');
 
 //middleware
 app.use(cors());
 app.use(express.json());
 
-//ROUTES//
-
+app.get('/api/books', (req, res) => {
+    res.json(bookData);
+  });
 
 //CREATE A user
 app.post("/registration", async(req, res) => {
@@ -52,8 +55,13 @@ app.get("/create-tables", async (req, res) => {
 })
 //Update a row
 
-//Delete a row
 
-app.listen(5000, () => {
-    console.log("server has started on port 5000");
-} ) 
+// GET ALL TOSOS
+//GET A todo
+//Update a todo
+//Delete a todo
+
+app.listen(port, () => {
+    console.log(`Server is running on port ${port}`);
+  });
+  
