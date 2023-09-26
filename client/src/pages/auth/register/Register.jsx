@@ -74,10 +74,10 @@ const Register = () => {
               Join us today <br /> and get your books <br /> published without hassle
             </div>
             <div className="text-[20px] text-justify">
-              Are you or a loved one battling cancer and seeking <br /> a
-              reliable companion throughout your journey? <br /> Look no further
-              – Cancer Care Connect is here to <br /> empower, inform, and
-              uplift you every step of the way.
+              Are you or a colleague struggling to get their <br /> books
+              published to reach the desired audience? <br /> Look no further
+              – Warebooks is here to <br /> help, and
+              direct you to your readers.
             </div>
           </div>
         </div>
