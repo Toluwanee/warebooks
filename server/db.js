@@ -67,10 +67,6 @@ async function createUsersTable() {
 
 getPostgresVersion();
 createUsersTable();
-createForumsTable();
-createForumListTable();
-createForumChatTable();
-createContactTable();
-createJournalTable();
+
 
 export default sql;

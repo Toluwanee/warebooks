@@ -3,12 +3,10 @@ import cors from "cors";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import sql from "./db.js";
+import bookData  from './data/BookData.js';
 
 const app = express();
 const port = process.env.PORT || 5001;
-
-// Import book data
-const bookData = require('./data/BookData');
 
 //middleware
 app.use(cors());
