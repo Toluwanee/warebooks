@@ -95,7 +95,7 @@ const NavBar = () => {
                 <a href="#publisher">PUBLISHER</a>
               </li> */}
               <li className="px-8 py-4 max-sm:p-2">
-                <NavLink to="dasboard">PUBLISHER</NavLink>
+                <NavLink to="dashboard">PUBLISHER</NavLink>
               </li>
               <li className="px-8 py-4 max-sm:p-2">
                 <NavLink to="bookstore">BOOKSTORE</NavLink>
