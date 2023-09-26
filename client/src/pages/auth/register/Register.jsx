@@ -1,7 +1,4 @@
 import { Link } from 'react-router-dom'
-
-
-
 import { useEffect, useState } from "react";
 
 const Register = () => {
@@ -10,8 +7,6 @@ const Register = () => {
   const [lastName, setLastName] = useState("");
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
-  //const [date, setDate] = useState("");
-  //const [gender, setGender] = useState("");
   const [password, setPassword] = useState("");
   const [password_confirmation, setPasswordConfirmation] = useState("");
 
@@ -89,19 +84,7 @@ const Register = () => {
             Please Sign Up To Continue
           </div>
 
-          {/* This is the form you can see all the input feilds here. 
-          Incase you need another input field:
-           <input
-                className="bg-[#fff] border border-[#9e9e9e] p-[5px] rounded-[8px]"
-                type="text"
-                value={Put the name of the input feild here. Make sure you've created a state for at the top. I'll leave a comment at the top so you can see where you should create the state}
-                onChange={(event) => {
-                  put the set part of the state here then put e.target.value inside liek this: setFirstName(event.target.value);
-                }}
-                placeholder="First Name"
-              />
-
-           */}
+         
           <form onSubmit={submitRegister}>
             <div className=" w-[80%] grid grid-cols-2 gap-10 m-auto">
               <input
@@ -142,30 +125,7 @@ const Register = () => {
                 }}
                 placeholder="Email"
               />
-              {/* <input
-                className="bg-[#fff] border border-[#9e9e9e] p-[5px] rounded-[8px]"
-                type="date"
-                value={date}
-                min="1920-01-01" 
-                max="2022-12-31"
-                onChange={(event) => {
-                  setDate(event.target.value);
-                }}
-                placeholder="Date"
-              /> */}
-              {/* <select
-                className="bg-[#fff] border border-[#9e9e9e] p-[5px] rounded-[8px]"
-                type="text"
-                placeholder="Gender"
-                value={gender}
-                onChange={(event) => {
-                  setGender(event.target.value);
-                }}
-              >
-                <option value="">Gender</option>
-                <option value="Male">Male</option>
-                <option value="Female">Female</option>
-              </select> */}
+              
               <input
                 className="bg-[#fff] border border-[#9e9e9e] p-[5px] rounded-[8px]"
                 type="password"

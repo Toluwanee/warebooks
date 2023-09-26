@@ -1,5 +1,12 @@
 import postgres from "postgres";
 import dotenv from "dotenv";
+import pool from "pg";
+
+const pool = new Pool({
+    user: "postgres",
+    
+})
+
 
 dotenv.config();
 

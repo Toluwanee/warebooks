@@ -8,6 +8,8 @@ CREATE TABLE users(
     phone VARCHAR(255) NOT NULL,
     password VARCHAR(255) NOT NULL,
     dateCreated TIMESTAMP DEFAULT NOW() 
+);
+
 CREATE TABLE users (
   id INT PRIMARY KEY,
   firstName VARCHAR(255),
