@@ -89,4 +89,4 @@ const bookData =[{
 
 ];
 
-module.exports = bookData;
+export default bookData;

@@ -10,6 +10,7 @@ import { About } from "./pages/landingpage/about/About";
 import { NotFound } from "./pages/errors/notfound/NotFound";
 import { PrivacyPolicy } from "./pages/landingpage/policies/PrivacyPolicy";
 import { TermsOfService } from "./pages/landingpage/policies/TermsOfService";
+import Dashboard from "./pages/dashboard/users/Dashboard";
 import {
   Route,
   RouterProvider,
@@ -30,8 +31,11 @@ const router = createBrowserRouter(
         <Route path="register" element={<Register />} />
         <Route path="privacypolicy" element={<PrivacyPolicy />} />
         <Route path="termsofservice" element={<TermsOfService />} />
+        
       </Route>
       <Route path="*" element={<NotFound />} />
+      <Route path="dashboard" element={<Dashboard />} />
+      
     </>
   )
 );

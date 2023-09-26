@@ -1,7 +1,10 @@
-const express = require("express");
+import express from "express";
+import cors from "cors";
+import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
+import sql from "./db.js";
+
 const app = express();
-const cors =  require("cors");
-const pool = require("./db");
 const port = process.env.PORT || 5001;
 
 // Import book data

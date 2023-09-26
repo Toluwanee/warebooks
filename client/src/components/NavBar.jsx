@@ -91,8 +91,11 @@ const NavBar = () => {
               <li className="px-8 py-4 max-sm:p-2">
                 <NavLink to="about">ABOUT</NavLink>
               </li>
-              <li className="px-8 py-4 max-sm:p-2">
+              {/* <li className="px-8 py-4 max-sm:p-2">
                 <a href="#publisher">PUBLISHER</a>
+              </li> */}
+              <li className="px-8 py-4 max-sm:p-2">
+                <NavLink to="dasboard">PUBLISHER</NavLink>
               </li>
               <li className="px-8 py-4 max-sm:p-2">
                 <NavLink to="bookstore">BOOKSTORE</NavLink>
