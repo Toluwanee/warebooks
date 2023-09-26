@@ -2,7 +2,8 @@ const express = require("express");
 const app = express();
 const cors =  require("cors");
 const pool = require("./db");
-const dotenv = require("dotenv")
+const dotenv = require("dotenv");
+const bcrypt = require('bcrypt');
 dotenv.config();
 const port = process.env.PORT || 8080;
 
@@ -18,10 +19,13 @@ app.use(express.json());
 app.post("/registration", async(req, res) => {
     try {
         console.log(req.body);
-        const { firstName, lastName, email, phone, password, confirmPassword } = req.body;
+        const { firstName, lastName, email, phone, password } = req.body;
+
+        const salt = await bcrypt.genSalt(10);
+
         const newRegistration = await pool.query(
-            "INSERT INTO users (firstName, lastName, email, phone, password, confirmPassword) VALUES($1, $2, $3, $4, $5, $6)",
-             [firstName, lastName, email, phone, password, confirmPassword]
+            "INSERT INTO users (firstName, lastName, email, phone, password) VALUES($1, $2, $3, $4, $5)",
+             [firstName, lastName, email, phone, password]
              );
              res.json(newRegistration);
     } catch (err) {

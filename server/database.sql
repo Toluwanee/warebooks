@@ -7,6 +7,5 @@ CREATE TABLE users(
     email VARCHAR(255) NOT NULL,
     phone VARCHAR(255) NOT NULL,
     password VARCHAR(255) NOT NULL,
-    confirm_password VARCHAR(255) NOT NULL,
     dateCreated TIMESTAMP DEFAULT NOW() 
 );
