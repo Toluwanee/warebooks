@@ -18,10 +18,10 @@ app.use(express.json());
 app.post("/registration", async(req, res) => {
     try {
         console.log(req.body);
-        const { firstName, lastName, email, password } = req.body;
+        const { firstName, lastName, email, phone, password, confirmPassword } = req.body;
         const newRegistration = await pool.query(
-            "INSERT INTO users (firstName, lastName, email, password) VALUES($1, $2, $3, $4)",
-             [firstName, lastName, email, password]
+            "INSERT INTO users (firstName, lastName, email, phone, password, confirmPassword) VALUES($1, $2, $3, $4, $5, $6)",
+             [firstName, lastName, email, phone, password, confirmPassword]
              );
              res.json(newRegistration);
     } catch (err) {
@@ -37,6 +37,7 @@ app.get("/create-tables", async (req, res) => {
             name VARCHAR(255) NOT NULL,
             email VARCHAR(255) NOT NULL,
             password VARCHAR(255) NOT NULL,
+            confirm_password VARCHAR(255) NOT NULL,
             date_created DEFAULT NOW()
         )`);
     
