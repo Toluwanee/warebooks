@@ -16,6 +16,24 @@ app.get('/api/books', (req, res) => {
     res.json(bookData);
   });
 
+//CREATE A user
+app.post("/registration", async(req, res) => {
+    try {
+        console.log(req.body);
+        const { firstName, lastName, email, phone, password } = req.body;
+
+        const salt = await bcrypt.genSalt(10);
+
+        const newRegistration = await pool.query(
+            "INSERT INTO users (firstName, lastName, email, phone, password) VALUES($1, $2, $3, $4, $5)",
+             [firstName, lastName, email, phone, password]
+             );
+             res.json(newRegistration);
+    } catch (err) {
+        console.error(err.message);
+    }
+});
+
 //Create the db tables for the system
 app.get("/create-tables", async (req, res) => {
     try {
@@ -24,6 +42,7 @@ app.get("/create-tables", async (req, res) => {
             name VARCHAR(255) NOT NULL,
             email VARCHAR(255) NOT NULL,
             password VARCHAR(255) NOT NULL,
+            confirm_password VARCHAR(255) NOT NULL,
             date_created DEFAULT NOW()
         )`);
     
@@ -32,21 +51,7 @@ app.get("/create-tables", async (req, res) => {
         console.log(error.message)
     }
 })
-
-//CREATE A TO DO
-app.post("/registration", async(req, res) => {
-    try {
-        const { name, email, password } = req.body;
-        const newRegistration = await pool.query(
-            "INSERT INTO users (name, email, password) VALUES($1, $2, $3)",
-            [name, email, password]
-            );
-
-            res.json(newRegistration)
-    } catch (err) {
-        console.error(err.message);
-    }
-})
+//Update a row
 
 
 // GET ALL TOSOS
