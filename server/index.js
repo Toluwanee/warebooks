@@ -3,7 +3,8 @@ import cors from "cors";
 import bcrypt from "bcrypt";
 import morgan from "morgan";
 import jwt from "jsonwebtoken";
-import sql from "./db.js";
+//import sql from "./db.js";
+import db from "./db";
 import bookData  from './data/BookData.js';
 
 
@@ -193,15 +194,26 @@ app.get("/api/v1/users", async (req, res) => {
 
 
 // for books
-app.get("/api/v1/books", (req, res) => {
-    res.status(200).json({
+// GET ALL BOOKS
+app.get("/api/v1/books", async (req, res) => {
+    try {
+      //const results = await db.query("select * from books");
+      const bookRatingsData = await db.query(
+        "select * from books left join (select book_id, COUNT(*), TRUNC(AVG(rating),1) as average_rating from reviews group by book_id) reviews on book.id = reviews.book_id;"
+      );
+  
+      res.status(200).json({
         status: "success",
+     //   results: bookRatingsData.rows.length,
         data: {
-            books: ["afried", "dexter"],
+        //  books: bookRatingsData.rows,
         },
-        
-    });
-});
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  });
+
 
 //Get a book
 app.get("/api/v1/books/:booksid", (req, res) => {

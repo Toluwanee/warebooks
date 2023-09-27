@@ -2,20 +2,21 @@ import postgres from "postgres";
 import dotenv from "dotenv";
 import { Pool } from 'pg';
 
-const pool = new Pool();
+
+//const pool = new Pool();
 const query = (text, params) => pool.query(text, params);
 
 
-// import { Pool } from "pg";
+import { Pool } from "pg";
 
-// // Define the connection configuration
-// const pool = new Pool({
-//   user: "toluwalope9",
-//   host: "localhost",
-//   database: "warebooks",
-//   password: "1",
-//   port: 5432 // The default PostgreSQL port is 5432
-// });
+// Define the connection configuration
+const pool = new Pool({
+  user: "toluwalope9",
+  host: "localhost",
+  database: "warebooks",
+  password: "1",
+  port: 5432 // The default PostgreSQL port is 5432
+});
 
 // Now, you can use the 'pool' instance to query the database
 
