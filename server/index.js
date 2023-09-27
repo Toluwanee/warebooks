@@ -1,6 +1,7 @@
 import express from "express";
 import cors from "cors";
 import bcrypt from "bcrypt";
+import morgan from "morgan";
 import jwt from "jsonwebtoken";
 import sql from "./db.js";
 import bookData  from './data/BookData.js';
@@ -13,60 +14,89 @@ const port = process.env.PORT || 5001;
 app.use(cors());
 app.use(express.json());
 
+app.get("/api/v1/getbooks", (req, res) => {
+    res.status(200).json({
+        status: "success",
+        data: {
+            books: ["afried", "dexter"],
+        },
+        
+    });
+});
+
+
+app.get("/api/v1/:id", (req, res) => {
+    res.status(200).json({
+        status: "success",
+        data: {
+            books: ["afried", "dexter"],
+        },
+        
+    });
+});
 //ROUTES
 
 //Register and login routes
-app.use("/auth", require("./routes/jwtAuth."))
-
-
-  app.get("/api/todos", async (req, res) => {
-    const todos = await sql`SELECT * FROM todos`;
-    // res.json(data)
-    res.json(todos)
-   /*  if (todos) {
-      res.status(200).send(todos);
-    } else {
-      res.status(404).send("not working");
-    } */
-    // res.send(data)
-  });
+//app.use("/auth", require("./routes/jwtAuth."))
 
 
 
-//CREATE A user
-app.post("/registration", async(req, res) => {
-    try {
-        console.log(req.body);
-        const { firstName, lastName, email, phone, password } = req.body;
-
-        const salt = await bcrypt.genSalt(10);
-
-        const newRegistration = await pool.query(
-            "INSERT INTO users (firstName, lastName, email, phone, password) VALUES($1, $2, $3, $4, $5)",
-             [firstName, lastName, email, phone, password]
-             );
-             res.status(201)("Successfully connecct");
-    } catch (err) {
-        console.error(err.message);
-    }
-});
 
 
-app.post("/api/todos2", async (req, res) => {
-    const { task} = req.body
-// 'Drink'. => ${task}
-  const todos2 = await sql`INSERT INTO aliyu (task) VALUES ( ${task})`;
 
-  //  res.json(todos2)
-//   console.log(todos2);
-  if (todos2) {
-    res.status(201).send("Succesfully connected");
-  } else {
-    res.status(404).send("not working");
-  } 
 
-  // res.send(data)
-});
+
+
+//   app.get("/api/todos", async (req, res) => {
+//     const todos = await sql`SELECT * FROM todos`;
+//     // res.json(data)
+//     res.json(todos)
+//    /*  if (todos) {
+//       res.status(200).send(todos);
+//     } else {
+//       res.status(404).send("not working");
+//     } */
+//     // res.send(data)
+//   });
+
+
+
+// //CREATE A user
+// app.post("/registration", async(req, res) => {
+//     try {
+//         console.log(req.body);
+//         const { firstName, lastName, email, phone, password } = req.body;
+
+//         const salt = await bcrypt.genSalt(10);
+
+//         const newRegistration = await pool.query(
+//             "INSERT INTO users (firstName, lastName, email, phone, password) VALUES($1, $2, $3, $4, $5)",
+//              [firstName, lastName, email, phone, password]
+//              );
+//              res.status(201)("Successfully connecct");
+//     } catch (err) {
+//         console.error(err.message);
+//     }
+// });
+
+
+// app.post("/api/todos2", async (req, res) => {
+//     const { task} = req.body
+// // 'Drink'. => ${task}
+//   const todos2 = await sql`INSERT INTO aliyu (task) VALUES ( ${task})`;
+
+//   //  res.json(todos2)
+// //   console.log(todos2);
+//   if (todos2) {
+//     console.log("Succesfully connected")
+//     // res.status(201).send("Succesfully connected");
+//   } else {
+//     console.log("not successful")
+//     // res.status(404).send("not working");
+//   } 
+
+//   // res.send(data)
+// });
 
 
 

@@ -1,4 +1,4 @@
-CREATE DATABASE warebooks_users;
+
 
 CREATE TABLE users(
     userID SERIAL PRIMARY KEY,
@@ -10,6 +10,13 @@ CREATE TABLE users(
     dateCreated TIMESTAMP DEFAULT NOW() 
 );
 
+
+CREATE TABLE books(
+    userID SERIAL PRIMARY KEY,
+    author VARCHAR(255) NOT NULL,
+    title VARCHAR(255) NOT NULL,
+    ISBN INT 
+);
 
 
 
