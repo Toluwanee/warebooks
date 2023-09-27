@@ -1,5 +1,11 @@
 import postgres from "postgres";
 import dotenv from "dotenv";
+import { Pool } from 'pg';
+
+const pool = new Pool();
+const query = (text, params) => pool.query(text, params);
+
+
 // import { Pool } from "pg";
 
 // // Define the connection configuration
@@ -81,5 +87,6 @@ async function createUsersTable() {
 getPostgresVersion();
 createUsersTable();
 
+export { query };
 export default sql;
 //export { pool, sql } ;

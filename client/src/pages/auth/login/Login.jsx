@@ -4,7 +4,7 @@
 import { useEffect, useState } from "react";
 
 
-const Signin = () => {
+const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
@@ -29,7 +29,7 @@ const Signin = () => {
       if (response.ok) {
         const data = await response.json(); 
         localStorage.setItem('token', data.token)
-        toast.success('Success')
+       // toast.success('Success')
       } else {
         throw new Error("Network response was not ok");
       }
@@ -112,7 +112,7 @@ const Signin = () => {
   );
 };
 
-export default Signin;
+export default Login;
 
 
 

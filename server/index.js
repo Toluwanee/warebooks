@@ -113,8 +113,6 @@ app.get("/api/v1/users", async (req, res) => {
   });
   
   
-  
-  
   app.post("/api/v1/:user/createJournal", async (req, res) => {
     const { title, user, journal } = req.body;
   
@@ -218,6 +216,7 @@ app.get("/api/v1/books/:booksid", (req, res) => {
     });
 });
 
+//Post a book
 app.post("/api/v1/books", (req, res) => {
         console.log(req.body);
         res.status(201).json({
@@ -259,24 +258,12 @@ app.delete("/api/v1/books/:id", (req, res) => {
 //app.use("/auth", require("./routes/jwtAuth."))
 
 
+//get book data by Jonah
+app.get('/api/books', (req, res) => {
+    res.json(bookData);
+  });
 
-
-
-//   app.get("/api/todos", async (req, res) => {
-//     const todos = await sql`SELECT * FROM todos`;
-//     // res.json(data)
-//     res.json(todos)
-//    /*  if (todos) {
-//       res.status(200).send(todos);
-//     } else {
-//       res.status(404).send("not working");
-//     } */
-//     // res.send(data)
-//   });
-
-
-
-// //CREATE A user
+//CREATE A user
 // app.post("/registration", async(req, res) => {
 //     try {
 //         console.log(req.body);
@@ -288,36 +275,13 @@ app.delete("/api/v1/books/:id", (req, res) => {
 //             "INSERT INTO users (firstName, lastName, email, phone, password) VALUES($1, $2, $3, $4, $5)",
 //              [firstName, lastName, email, phone, password]
 //              );
-//              res.status(201)("Successfully connecct");
+//              res.json(newRegistration);
 //     } catch (err) {
 //         console.error(err.message);
 //     }
 // });
 
-
-// app.post("/api/todos2", async (req, res) => {
-//     const { task} = req.body
-// // 'Drink'. => ${task}
-//   const todos2 = await sql`INSERT INTO aliyu (task) VALUES ( ${task})`;
-
-//   //  res.json(todos2)
-// //   console.log(todos2);
-//   if (todos2) {
-//     console.log("Succesfully connected")
-//     // res.status(201).send("Succesfully connected");
-//   } else {
-//     console.log("not successful")
-//     // res.status(404).send("not working");
-//   } 
-
-//   // res.send(data)
-// });
-
-
-
-
-
-//Create the db tables for the system
+// //Create the db tables for the system
 // app.get("/create-tables", async (req, res) => {
 //     try {
 //         await pool.query(`CREATE TABLE users(
@@ -334,19 +298,6 @@ app.delete("/api/v1/books/:id", (req, res) => {
 //         console.log(error.message)
 //     }
 // })
-
-
-
-
-
-
-//Update a row
-
-
-// GET ALL TOSOS
-//GET A todo
-//Update a todo
-//Delete a todo
 
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
