@@ -13,6 +13,11 @@ const port = process.env.PORT || 5001;
 app.use(cors());
 app.use(express.json());
 
+//ROUTES
+
+//Register and login routes
+app.use("/auth", require("./routes/jwtAuth."))
+
 
   app.get("/api/todos", async (req, res) => {
     const todos = await sql`SELECT * FROM todos`;
@@ -40,7 +45,7 @@ app.post("/registration", async(req, res) => {
             "INSERT INTO users (firstName, lastName, email, phone, password) VALUES($1, $2, $3, $4, $5)",
              [firstName, lastName, email, phone, password]
              );
-             res.json(newRegistration);
+             res.status(201)("Successfully connecct");
     } catch (err) {
         console.error(err.message);
     }
