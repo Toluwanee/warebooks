@@ -1,16 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 function PublishPage() {
-  const [bookTitle, setBookTitle] = useState('');
-  const [authorName, setAuthorName] = useState('');
-  const [bookOverview, setOverviewName] = useState('');
+  const [bookTitle, setBookTitle] = useState("");
+  const [authorName, setAuthorName] = useState("");
+  const [bookOverview, setOverviewName] = useState("");
   const [file, setFile] = useState(null);
   const [bookCover, setbookCover] = useState(null);
 
   const handleTitleChange = (e) => {
     setBookTitle(e.target.value);
   };
-  
+
   const handleAuthorChange = (e) => {
     setAuthorName(e.target.value);
   };
@@ -20,26 +20,38 @@ function PublishPage() {
   };
 
   const handleFileChange = (e) => {
-    // You can handle file uploads here and store the file in your state
     const selectedFile = e.target.files[0];
     setFile(selectedFile);
   };
 
   const handleBookCoverChange = (e) => {
-    // You can handle file uploads here and store the file in your state
     const selectedFile = e.target.files[0];
     setbookCover(selectedFile);
   };
 
-
   const handlePublish = () => {
-    // Handle publishing logic here, e.g., sending data to your backend
-    console.log('Book Title:', bookTitle);
-    console.log('Author Name:', authorName);
-    console.log('Book Overview:', bookOverview);
-    console.log('File:', file);
-    console.log('Book Cover:', bookCover);
-    // You can make an API request to upload the book and its details to your server.
+    const formData = new FormData();
+    formData.append("bookTitle", bookTitle);
+    formData.append("authorName", authorName);
+    formData.append("bookOverview", bookOverview);
+    formData.append("file", file);
+    formData.append("bookCover", bookCover);
+
+    // Make a POST request to upload the book and its details to the server
+    fetch("http://localhost:3000/api/upload-book", {
+      method: "POST",
+      body: formData,
+    })
+      .then((response) => {
+        if (response.status === 201) {
+          console.log("Book uploaded successfully");
+        } else {
+          console.error("Error uploading book");
+        }
+      })
+      .catch((error) => {
+        console.error("Error uploading book:", error);
+      });
   };
 
   return (
@@ -47,7 +59,9 @@ function PublishPage() {
       <div className="bg-white p-8 rounded-lg shadow-md w-96">
         <h2 className="text-2xl font-semibold mb-4">Publish Your Book</h2>
         <div className="mb-4">
-          <label className="block text-sm font-medium text-gray-700">Book Title</label>
+          <label className="block text-sm font-medium text-gray-700">
+            Book Title
+          </label>
           <input
             type="text"
             value={bookTitle}
@@ -56,7 +70,9 @@ function PublishPage() {
           />
         </div>
         <div className="mb-4">
-          <label className="block text-sm font-medium text-gray-700">Author Name</label>
+          <label className="block text-sm font-medium text-gray-700">
+            Author Name
+          </label>
           <input
             type="text"
             value={authorName}
@@ -65,7 +81,9 @@ function PublishPage() {
           />
         </div>
         <div className="mb-4">
-          <label className="block text-sm font-medium text-gray-700">Brief Overview of Book</label>
+          <label className="block text-sm font-medium text-gray-700">
+            Brief Overview of Book
+          </label>
           <input
             type="text"
             value={bookOverview}
@@ -74,8 +92,11 @@ function PublishPage() {
           />
         </div>
         <div className="mb-4">
-          <label className="block text-sm font-medium text-gray-700">Upload Book (PDF)</label>
+          <label className="block text-sm font-medium text-gray-700">
+            Upload Book (PDF)
+          </label>
           <input
+            name="file"
             type="file"
             accept=".pdf"
             onChange={handleFileChange}
@@ -83,8 +104,11 @@ function PublishPage() {
           />
         </div>
         <div className="mb-4">
-          <label className="block text-sm font-medium text-gray-700">Upload Book Cover (.jpg format)</label>
+          <label className="block text-sm font-medium text-gray-700">
+            Upload Book Cover (.jpg format)
+          </label>
           <input
+            name="bookCover"
             type="file"
             accept=".jpg"
             onChange={handleBookCoverChange}
