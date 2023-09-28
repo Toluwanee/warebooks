@@ -1,27 +1,52 @@
-import React, { useState } from "react";
+import { useState } from "react";
+import axios from "axios";
+import {Link, NavLink, Navigate, useNavigate} from "react-router-dom";
 
 export default function Login() {
   const [formData, setFormData] = useState({ 
-    user: {
-      username: "", 
-      password: "" 
-    },
+    email: "", 
+    password: ""
   });
+
+  const navigation = useNavigate();
 
   const handleChange = (e) => {
     setFormData({
-      user: {
-        ...formData.user,
-        [e.target.name]: e.target.value,
-      },
+      ...formData,
+      [e.target.name]: e.target.value,
     });
   };
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await fetch("http://localhost:5001/api/v1/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.status === 201) {
+        navigation("/dashboard");
+        // Handle successful login, e.g., store the token and redirect
+        console.log("Login Successful");
+      } else {
+        // Handle login failure, display an error message to the user
+        console.error("Login Failed");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  };
+
   return (
-    <figure className="h-screen flex bg-gray-100">
+    <fragment className="h-screen flex bg-gray-100">
       <div className="w-full max-w-md m-auto bg-white rounded-lg border border-primaryBorder shadow-default py-10 px-1">
         <blockquote className="text-2xl font-medium text-center">
-          <p className="text-lg font-semibold">Welcome to My-App</p>
+          <p className="text-lg font-semibold">Welcome to wareBooks</p>
         </blockquote>
         
         <div className="text-primary m-6">
@@ -30,14 +55,14 @@ export default function Login() {
           Login to your account
         </h1>
       </div>
-      <form>
-        <label className="text-left">Username:</label>
+      <form onSubmit={handleSubmit}>
+        <label className="text-left">email:</label>
         <input
-          name="username"
-          type="text"
-          value={formData.user.username}
+          name="email"
+          type="email"
+          value={formData.email}
           onChange={handleChange}
-          placeholder="Username"
+          placeholder="email"
           className={
             "w-full p-2 text-primary border rounded-md outline-none text-sm transition duration-150 ease-in-out mb-4"
           }
@@ -46,7 +71,7 @@ export default function Login() {
         <input
           name="password"
           type="password"
-          value={formData.user.password}
+          value={formData.password}
           onChange={handleChange}
           placeholder="Password"
           className={
@@ -72,6 +97,6 @@ export default function Login() {
     </div>
         
       </div>
-    </figure>
+    </fragment>
   );
 }

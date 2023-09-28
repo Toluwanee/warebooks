@@ -6,58 +6,103 @@ import sql from "./db.js";
 import bookData  from './data/BookData.js';
 
 const app = express();
-const port = process.env.PORT || 5001;
+const port = process.env.SERVER_PORT || 5001;
 
 //middleware
-app.use(cors());
+app.use(cors({origin:["http://localhost:5173"]}));
 app.use(express.json());
 
 app.get('/api/books', (req, res) => {
     res.json(bookData);
   });
 
-//CREATE A user
-app.post("/registration", async(req, res) => {
+
+//Register
+app.post("/api/v1/register", async (req, res) => {
+    const { firstName, lastName, phone, email, password } =
+      req.body;
+  
+    console.log("res", res.statusCode);
+  
     try {
-        console.log(req.body);
-        const { firstName, lastName, email, phone, password } = req.body;
-
-        const salt = await bcrypt.genSalt(10);
-
-        const newRegistration = await pool.query(
-            "INSERT INTO users (firstName, lastName, email, phone, password) VALUES($1, $2, $3, $4, $5)",
-             [firstName, lastName, email, phone, password]
-             );
-             res.json(newRegistration);
-    } catch (err) {
-        console.error(err.message);
-    }
-});
-
-//Create the db tables for the system
-app.get("/create-tables", async (req, res) => {
-    try {
-        await pool.query(`CREATE TABLE users(
-            user_id SERIAL PRIMARY KEY,
-            name VARCHAR(255) NOT NULL,
-            email VARCHAR(255) NOT NULL,
-            password VARCHAR(255) NOT NULL,
-            confirm_password VARCHAR(255) NOT NULL,
-            date_created DEFAULT NOW()
-        )`);
-    
-        res.json("Tables created successfully")
+      const emailCheck =
+        await sql`SELECT COUNT(*) FROM users WHERE email = ${email}`;
+      const emailCount = emailCheck[0].count;
+  
+      if (emailCount > 0) {
+        res.status(400).send("Email is already in use.");
+        return;
+      }
+  
+      const phoneCheck =
+        await sql`SELECT COUNT(*) FROM users WHERE phone = ${phone}`;
+      const phoneCount = phoneCheck[0].count;
+  
+      if (phoneCount > 0) {
+        res.status(400).send("Phone number already exists");
+        return;
+      }
+  
+      const hashedPassword = await bcrypt.hash(password, 10);
+  
+      const response = await sql`
+        INSERT INTO users (firstName, lastName, phone, email, password)
+        VALUES (${firstName}, ${lastName}, ${phone}, ${email}, ${hashedPassword})
+        RETURNING *`;
+  
+      if (response) {
+        res.status(201).send(response);
+      } else {
+        res.status(500).send("Internal server Error");
+      }
     } catch (error) {
-        console.log(error.message)
+      // console.error("Error inserting user:", error);
+      console.error("Error:", error);
+      res.status(500).json({ error: "Internal server Error" }); // Respond with JSON
     }
-})
-//Update a row
+  });
 
+//Login
+app.post("/api/v1/login", async (req, res) => {
+    const { email, password } = req.body;
+  
+    console.log("res", res.statusCode);
+    console.log("email", email);
+  
+    try {
+      const emailCheck = await sql`SELECT * FROM users WHERE email = ${email};`;
+  
+      if (emailCheck[0]) {
+        bcrypt.compare(password, emailCheck[0].password, function (err, result) {
+          if (result) {
+            var token = jwt.sign(
+              {
+                exp: Math.floor(Date.now() / 1000) + 60 * 60 * 24 * 7,
+                id: emailCheck[0].id,
+                firstname: emailCheck[0].firstname,
+                lastname: emailCheck[0].lastname,
+                phone: emailCheck[0].phone,
+                email: emailCheck[0].email,
+              },
+              "shhhhh"
+            );
+            res.status(201).send({
+              message: "Login Successful",
+              token,
+            });
+          } else {
+            res.status(500).send("Incorrect Login details");
+          }
+        });
+      } else {
+        res.status(500).send("Incorrect Login details");
+      }
+    } catch (error) {
+      // console.error("Error inserting user:", error);
+      res.status(500).send("Internal server Error");
+    }
+  });
 
-// GET ALL TOSOS
-//GET A todo
-//Update a todo
-//Delete a todo
 
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
