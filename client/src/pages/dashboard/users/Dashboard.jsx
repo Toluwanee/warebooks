@@ -26,7 +26,7 @@ const Dashboard = () => {
         <div className='flex items-center justify-between gap-[10px] py-[15px] cursor-pointer'>
             <div className='flex items-center gap-[10px]'>
                 <FaWrench color='white'/>
-                <p className='text-[14px] leading-[20px] font-normal text-white'>Library</p>
+                <p className='text-[14px] leading-[20px] font-normal text-white'>Publish Now</p>
             </div>
             <FaChevronRight color='white'/>
         </div>
@@ -36,8 +36,8 @@ const Dashboard = () => {
         <p className='text-[10px] leading-[16px] font-extrabold text-white/[0.4]'>INTERFACE</p>
         <div className='flex items-center justify-between gap-[10px] py-[15px] cursor-pointer'>
             <div className='flex items-center gap-[10px]'>
-                <FaRegSun color='white'/>
-                <p className='text-[14px] leading-[20px] font-normal text-white'>Book Store</p>
+                <FaWrench color='white'/>
+                <p className='text-[14px] leading-[20px] font-normal text-white'>Library</p>
             </div>
             <FaChevronRight color='white'/>
         </div>
@@ -47,6 +47,9 @@ const Dashboard = () => {
                 <Link to="/publishpage">
                 <p className='text-[14px] leading-[20px] font-normal text-white'>Publish Now</p>
                 </Link>
+
+                <FaRegSun color='white'/>
+                <p className='text-[14px] leading-[20px] font-normal text-white'>Book Store</p>
             </div>
             <FaChevronRight color='white'/>
         </div>
