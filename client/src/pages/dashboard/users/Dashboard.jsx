@@ -1,4 +1,5 @@
 import {FaTachometerAlt, FaRegSun, FaChevronRight, FaWrench} from "react-icons/fa"
+import { Link } from "react-router-dom";
 
 const Dashboard = () => {
   return (
