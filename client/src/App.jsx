@@ -37,7 +37,7 @@ const router = createBrowserRouter(
         <Route path="*" element={<NotFound />} />
       </Route>
       <Route path="/dashboard" element={<Dashboard />} />
-      <Route path="/publishpage" element={<PublishPage />} />
+      <Route path="/upload" element={<PublishPage />} />
   
 
       
