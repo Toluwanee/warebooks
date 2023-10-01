@@ -1,5 +1,5 @@
 import {FaTachometerAlt, FaRegSun, FaChevronRight, FaWrench} from "react-icons/fa"
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const Dashboard = () => {
   return (
@@ -26,7 +26,7 @@ const Dashboard = () => {
         <div className='flex items-center justify-between gap-[10px] py-[15px] cursor-pointer'>
             <div className='flex items-center gap-[10px]'>
                 <FaWrench color='white'/>
-                <p className='text-[14px] leading-[20px] font-normal text-white'>Publish Now</p>
+                <NavLink to='/upload' className='text-[14px] leading-[20px] font-normal text-white'>Publish Now</NavLink>
             </div>
             <FaChevronRight color='white'/>
         </div>

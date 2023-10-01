@@ -1,11 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 
 function PublishPage() {
   const [bookTitle, setBookTitle] = useState("");
   const [authorName, setAuthorName] = useState("");
   const [bookOverview, setOverviewName] = useState("");
   const [file, setFile] = useState(null);
-  const [bookCover, setbookCover] = useState(null);
+  const [bookCover, setBookCover] = useState(null);
+  const [successMessage, setSuccessMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
+
+  const fileInputRef = useRef(null);
+  const bookCoverInputRef = useRef(null);
 
   const handleTitleChange = (e) => {
     setBookTitle(e.target.value);
@@ -26,7 +31,7 @@ function PublishPage() {
 
   const handleBookCoverChange = (e) => {
     const selectedFile = e.target.files[0];
-    setbookCover(selectedFile);
+    setBookCover(selectedFile);
   };
 
   const handlePublish = () => {
@@ -42,15 +47,26 @@ function PublishPage() {
       method: "POST",
       body: formData,
     })
-      .then((response) => {
+      .then(async (response) => {
         if (response.status === 201) {
-          console.log("Book uploaded successfully");
+          setSuccessMessage("Book uploaded successfully");
+          setErrorMessage("");
+          setBookTitle("");
+          setAuthorName("");
+          setOverviewName("");
+          setFile(null);
+          setBookCover(null);
+          fileInputRef.current.value = ""; // Clear the file input field
+          bookCoverInputRef.current.value = ""; // Clear the book cover input field
         } else {
-          console.error("Error uploading book");
+          const errorData = await response.json();
+          setErrorMessage(`Error uploading book: ${errorData.message}`);
+          setSuccessMessage("");
         }
       })
       .catch((error) => {
-        console.error("Error uploading book:", error);
+        setErrorMessage(`Error uploading book: ${error.message}`);
+        setSuccessMessage("");
       });
   };
 
@@ -58,6 +74,8 @@ function PublishPage() {
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
       <div className="bg-white p-8 rounded-lg shadow-md w-96">
         <h2 className="text-2xl font-semibold mb-4">Publish Your Book</h2>
+        {successMessage && <div className="text-green-600 mb-4">{successMessage}</div>}
+        {errorMessage && <div className="text-red-600 mb-4">{errorMessage}</div>}
         <div className="mb-4">
           <label className="block text-sm font-medium text-gray-700">
             Book Title
@@ -96,6 +114,7 @@ function PublishPage() {
             Upload Book (PDF)
           </label>
           <input
+            ref={fileInputRef} // Add a ref to the file input
             name="file"
             type="file"
             accept=".pdf"
@@ -108,6 +127,7 @@ function PublishPage() {
             Upload Book Cover (.jpg format)
           </label>
           <input
+            ref={bookCoverInputRef} // Add a ref to the book cover input
             name="bookCover"
             type="file"
             accept=".jpg"
@@ -117,7 +137,7 @@ function PublishPage() {
         </div>
         <button
           onClick={handlePublish}
-          className="w-full bg-indigo-500 text-white py-2 rounded-md hover:bg-indigo-600 transition duration-300"
+          className="w-full bg-indigo-500 text-white py-2 rounded-md hover-bg-indigo-600 transition duration-300"
         >
           Publish
         </button>
