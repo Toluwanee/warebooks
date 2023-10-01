@@ -1,9 +1,9 @@
 import { Link, NavLink } from "react-router-dom";
 import logo from "../assets/img/wareBook-logo.png";
-import Inlogo from "../assets/img/In-logo-blue.png";
-import Xlogo from "../assets/img/X-logo-black.png";
-import Gitlogo from "../assets/img/Git-logo-black.png";
-import Iglogo from "../assets/img/Ig-logo-gradient.png";
+import Inlogo from "../assets/img/In-logo-white.png";
+import Xlogo from "../assets/img/X-logo-white.png";
+import Gitlogo from "../assets/img/Git-logo-white.png";
+import Iglogo from "../assets/img/Ig-logo-white.png";
 
 const Footer = () => {
   return (
@@ -17,13 +17,13 @@ const Footer = () => {
               alt="wareBook-logo"
             />
           </Link>
-          <p className="px-4 text-left w-[256px] max-sm:w-auto">
+          <p className="px-4 text-left w-[256px] max-sm:w-auto text-white">
             wareBooks is a complete Book publication tool for authors, with a
             storefront for published books to be made available to readers
             worldwide
           </p>
         </div>
-        <div className="justify-start items-start w-1/3 max-sm:w-auto text-sm max-sm:text-xs">
+        <div className="justify-start items-start w-1/3 max-sm:w-auto text-sm max-sm:text-xs text-white">
           <h1 className="p-9 max-sm:p-3">COMPANY</h1>
           <nav className="">
             <ul className="flex flex-col">
@@ -42,7 +42,7 @@ const Footer = () => {
             </ul>
           </nav>
         </div>
-        <div className="justify-start items-start w-1/3 max-sm:w-auto text-sm max-sm:text-xs">
+        <div className="justify-start items-start w-1/3 max-sm:w-auto text-sm max-sm:text-xs text-white">
           <h1 className="p-9 max-sm:p-3">COMPANY</h1>
           <nav className="">
             <ul className="flex flex-col">
@@ -92,7 +92,7 @@ const Footer = () => {
           ></img>
         </a>
       </div>
-      <div className="pl-7 pr-7 hidden md:flex sm:hidden justify-between items-center text-sm max-sm:text-xs">
+      <div className="pl-7 pr-7 hidden md:flex sm:hidden justify-between items-center text-sm max-sm:text-xs text-white">
         <div>
           <p>© 2023 wareBooks. All Rights Reserved.</p>
         </div>
@@ -100,17 +100,17 @@ const Footer = () => {
           <nav>
             <ul className="flex divide-x-[1px]">
               <li className="p-6">
-                <NavLink to="privacypolicy">Privacy</NavLink>
+                <NavLink to="privacy-policy">Privacy</NavLink>
               </li>
               <hr className="h-15 my-1 divide-x-2 divide-gray-500 max-sm:text-xs"></hr>
               <li className="p-6">
-                <NavLink to="termsofservice">Terms of Service</NavLink>
+                <NavLink to="terms-of-service">Terms of Service</NavLink>
               </li>
             </ul>
           </nav>
         </div>
       </div>
-      <div className="px-7 max-sm:px-3 md:hidden sm:flex  justify-between items-center max-sm:text-xs">
+      <div className="px-7 max-sm:px-3 md:hidden sm:flex  justify-between items-center max-sm:text-xs text-white">
         <div>
           <nav>
             <ul className="flex justify-between items-center divide-x-[1px]">

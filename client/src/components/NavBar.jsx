@@ -2,10 +2,6 @@
 import { Link, NavLink } from "react-router-dom";
 // import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
 import logo from "../assets/img/wareBook-logo.png";
-import Inlogo from "../assets/img/In-logo-white.png";
-import Xlogo from "../assets/img/X-logo-white.png";
-import Gitlogo from "../assets/img/Git-logo-white.png";
-import Iglogo from "../assets/img/Ig-logo-white.png";
 import SearchComponent from "./SearchComponent";
 
 const NavBar = () => {
@@ -17,47 +13,8 @@ const NavBar = () => {
 
   return (
     <section>
-      <nav className="flex flex-col justify-between items-center max-container">
-        <div className="flex justify-between items-center w-full bg-[#393280] h-auto lg:h-[46px] px-4 py-2">
-          <Link
-            className="text-1xl text-sm max-sm:text-xs p-2 text-white"
-            to="tel:+234 701 312 3835"
-          >
-            +234 701 312 3835
-          </Link>
-          <div className="flex">
-            <a href="https://www.linkedin.com/company/utility-ware/">
-              <img
-                className="p-4 h-14 w-14 max-sm:w-12 max-sm:h-12"
-                src={Inlogo}
-                alt="Linked-logo"
-              ></img>
-            </a>
-            <a href="https://twitter.com/UtilityWareLtd/">
-              <img
-                className="p-4 h-14 w-14 max-sm:w-12 max-sm:h-12"
-                src={Xlogo}
-                alt="Linked-logo"
-              ></img>
-            </a>
-            <a href="https://github.com/Utility-Ware/">
-              <img
-                className="p-4 h-14 w-14 max-sm:w-12 max-sm:h-12"
-                src={Gitlogo}
-                alt="Linked-logo"
-              ></img>
-            </a>
-            <a href="https://www.instagram.com/utilityware/">
-              <img
-                className="p-4 h-14 w-14 max-sm:w-12 max-sm:h-12"
-                src={Iglogo}
-                alt="Linked-logo"
-              ></img>
-            </a>
-          </div>
-        </div>
-
-        <div className="flex justify-between items-center w-full max-sm:w-auto  bg-white px-4 h-min">
+      <nav className="flex flex-col justify-between items-center max-container border-b-2 border-b-[#393280]">
+        <div className="flex justify-between items-center w-full max-sm:w-auto bg-[#393280] px-4 h-min">
           <Link to="/">
             <img
               src={logo}
@@ -67,7 +24,7 @@ const NavBar = () => {
           </Link>
           <SearchComponent />
           <div>
-            <ul className="flex divide-x-2 divide-gray-500 text-sm max-sm:text-xs text-[#393280]">
+            <ul className="flex divide-x-2 divide-gray-500 text-sm max-sm:text-xs text-white">
               <li className="px-2 max-sm:p-1">
                 <NavLink to="login">LOGIN</NavLink>
               </li>
