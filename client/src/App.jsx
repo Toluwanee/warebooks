@@ -32,8 +32,8 @@ const router = createBrowserRouter(
         <Route path="bookstore" element={<BookStore />} />
         <Route path="login" element={<Login />} />
         <Route path="register" element={<Register />} />
-        <Route path="privacypolicy" element={<PrivacyPolicy />} />
-        <Route path="termsofservice" element={<TermsOfService />} />
+        <Route path="privacy-policy" element={<PrivacyPolicy />} />
+        <Route path="terms-of-service" element={<TermsOfService />} />
         <Route path="*" element={<NotFound />} />
       </Route>
       <Route path="/dashboard" element={<Dashboard />} />
