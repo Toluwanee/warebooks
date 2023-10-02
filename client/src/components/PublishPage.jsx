@@ -43,7 +43,7 @@ function PublishPage() {
     formData.append("bookCover", bookCover);
 
     // Make a POST request to upload the book and its details to the server
-    fetch("http://localhost:3000/api/upload-book", {
+    fetch("http://localhost:5001/api/upload-book", {
       method: "POST",
       body: formData,
     })

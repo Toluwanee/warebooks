@@ -29,13 +29,13 @@ CREATE TABLE bookstore (
   created_at TIMESTAMP
 );
 
-CREATE TABLE myBooks (
-  id INT PRIMARY KEY,
-  title VARCHAR(255),
-  description TEXT NULL,
-  createdBy INT,
-  created_at TIMESTAMP
-);
+-- CREATE TABLE myBooks (
+--   id INT PRIMARY KEY,
+--   title VARCHAR(255),
+--   description TEXT NULL,
+--   createdBy INT,
+--   created_at TIMESTAMP
+-- );
 
 CREATE TABLE readingNow (
   id INT PRIMARY KEY,
