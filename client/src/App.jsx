@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { Link, Outlet} from "react-router-dom"
+// import { Link, Outlet} from "react-router-dom"
 import "./App.css";
 import Home from "./pages/landingpage/home/Home";
 import PublisherWorkspace from "./pages/dashboard/publisher/PublisherWorkSpace";
@@ -49,7 +49,7 @@ const router = createBrowserRouter(
 
       <Route>
       <Route path="/shared" element={<Layout />} />
-        {/* <Route index={true} element={<Invoice/> } /> */}
+        {/* {<Route index={true} element={<Invoice/> } /> } */}
       <Route path="/dashboard" element={<Dashboard />} />
       <Route path="/library" element={<Library/>} />
       
