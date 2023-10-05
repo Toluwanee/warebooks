@@ -1,38 +1,36 @@
 import {
-	HiOutlineViewGrid,
-	HiOutlineCube,
+	HiFolderOpen,
+	HiCollection,
 	HiOutlineShoppingCart,
-	HiOutlineUsers,
-	HiOutlineDocumentText,
-	HiOutlineAnnotation,
+	HiOutlineCloudUpload,
 	HiOutlineQuestionMarkCircle,
 	HiOutlineCog
 } from 'react-icons/hi'
 
 export const DASHBOARD_SIDEBAR_LINKS = [
 	{
-		key: 'dashboard',
-		label: 'Dashboard',
-		path: '/dashboard',
-		icon: <HiOutlineViewGrid />
-	},
-	{
 		key: 'library',
 		label: 'Library',
 		path: '/library',
-		icon: <HiOutlineCube />
+		icon: <HiCollection />
 	},
 	{
-		key: 'orders',
+		key: 'bookstore',
 		label: 'Bookstore',
-		path: '/orders',
+		path: '/books-store',
 		icon: <HiOutlineShoppingCart />
 	},
 	{
-		key: 'customers',
-		label: 'Publish',
+		key: 'mybooks',
+		label: 'My Books',
+		path: '/mybooks',
+		icon: <HiFolderOpen />
+	},
+	{
+		key: 'submit',
+		label: 'New Publish',
 		path: '/customers',
-		icon: <HiOutlineUsers />
+		icon: <HiOutlineCloudUpload />
 	}
 ]
 

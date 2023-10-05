@@ -17,6 +17,7 @@ import { TermsOfService } from "./pages/landingpage/policies/TermsOfService";
 import Layout from "./pages/dashboard/users/shared/Layout";
 import Dashboard from "./pages/dashboard/users/Dashboard";
 import Library from "./pages/dashboard/users/Library";
+import Store from "./pages/dashboard/users/Bookstore";
 
 
 import PublishPage from "./components/PublishPage";
@@ -44,14 +45,16 @@ const router = createBrowserRouter(
       
         <Route path="privacypolicy" element={<PrivacyPolicy />} />
         <Route path="termsofservice" element={<TermsOfService />} />
-        <Route path="*" element={<NotFound />} />
       </Route>
+
+      <Route path="*" element={<NotFound />} />
 
       <Route>
       <Route path="/shared" element={<Layout />} />
         {/* {<Route index={true} element={<Invoice/> } /> } */}
       <Route path="/dashboard" element={<Dashboard />} />
       <Route path="/library" element={<Library/>} />
+      <Route path="/books-store" element={<Store/>} />
       
       </Route>
       

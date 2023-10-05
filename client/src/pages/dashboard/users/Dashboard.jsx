@@ -10,7 +10,6 @@ const Dashboard = () => {
   return (
     <div >
       <Header/>
-    
       <div className="bg-neutral-100 h-screen w-screen overflow-hidden flex flex-row">
         <Sidebar/>
         {/* <Layout/> */}
