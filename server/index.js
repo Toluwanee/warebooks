@@ -15,7 +15,7 @@ const __filename = fileURLToPath(import.meta.url);  // Using fileURLToPath to ge
 const __dirname = dirname(__filename);  // Using dirname to get the directory name
 
 
-const connectionString = 'postgres://judeohiani:80piHgOFthEd@ep-mute-mountain-00610853.us-east-2.aws.neon.tech/uploaded_books';
+const connectionString = 'postgres://LovingBrother:bkXGK07CsVtu@ep-purple-paper-40509575.us-east-2.aws.neon.tech/wareBooks';
 
 const sequelize = new Sequelize(connectionString, {
   dialect: 'postgres',

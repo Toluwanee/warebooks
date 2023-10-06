@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import Books from "../../../components/books/Books";
+import Books from "../../../pages/landingpage/bookstore/BookStore";
 
 const BookStoreGrid = () => {
   const [books, setBooks] = useState([]);

@@ -1,6 +1,4 @@
 // BookCard.js
-import React from 'react';
-
 function BookCard({ book }) {
   return (
     <div className="bg-white p-4 rounded shadow">
