@@ -186,7 +186,7 @@ export const TermsOfService = () => {
             Questions: If you have any questions or concerns about these Terms or Ware Book, please contact us at:
             </p>
             <p className="text-base items-start leading-normal text-left break-normal max-sm:text-sm text-black">
-            Email: hello@utilityware.co
+            <a href="mailto: hello@utilityware.co">Email: hello@utilityware.co</a>
             </p>
             <p className="text-base items-start leading-normal text-left break-normal max-sm:text-sm text-black">
             Thank you for using Ware Book. We hope you enjoy our platform and find it a valuable tool for your digital publishing and reading needs.

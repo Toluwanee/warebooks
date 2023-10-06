@@ -1,3 +1,5 @@
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+// import { Link, Outlet} from "react-router-dom"
 import "./App.css";
 import Home from "./pages/landingpage/home/Home";
 import PublisherWorkspace from "./pages/dashboard/publisher/PublisherWorkSpace";
@@ -10,10 +12,17 @@ import { About } from "./pages/landingpage/about/About";
 import { NotFound } from "./pages/errors/notfound/NotFound";
 import { PrivacyPolicy } from "./pages/landingpage/policies/PrivacyPolicy";
 import { TermsOfService } from "./pages/landingpage/policies/TermsOfService";
+
+//working for the dashboard tolu
+import Layout from "./pages/dashboard/users/shared/Layout";
 import Dashboard from "./pages/dashboard/users/Dashboard";
+import Library from "./pages/dashboard/users/Library";
+import Store from "./pages/dashboard/users/Bookstore";
+
+
 import PublishPage from "./components/PublishPage";
 import {
-  Route,
+  // Route,
   RouterProvider,
   createBrowserRouter,
   createRoutesFromElements,
@@ -30,15 +39,29 @@ const router = createBrowserRouter(
         <Route path="bookstore" element={<BookStore />} />
         <Route path="login" element={<Login />} />
         <Route path="register" element={<Register />} />
-        <Route path="privacy-policy" element={<PrivacyPolicy />} />
-        <Route path="terms-of-service" element={<TermsOfService />} />
-        <Route path="*" element={<NotFound />} />
-      </Route>
-      <Route path="/dashboard" element={<Dashboard />} />
-      <Route path="/upload" element={<PublishPage />} />
-  
-
+        {/* Tolu dashboard */}
+        {/* <Route path="shared" element={<Layout />} />
+        <Route index element={<Dashboard />} /> */}
       
+        <Route path="privacypolicy" element={<PrivacyPolicy />} />
+        <Route path="termsofservice" element={<TermsOfService />} />
+      </Route>
+
+      <Route path="*" element={<NotFound />} />
+
+      <Route>
+      <Route path="/shared" element={<Layout />} />
+        {/* {<Route index={true} element={<Invoice/> } /> } */}
+      <Route path="/dashboard" element={<Dashboard />} />
+      <Route path="/library" element={<Library/>} />
+      <Route path="/books-store" element={<Store/>} />
+      </Route>
+      
+      {/* Tolu dashboard */}
+      
+        {/* <Route index element={<Dashboard />} /> */}
+      
+      <Route path="/publishpage" element={<PublishPage />} />
     </>
   )
 );
