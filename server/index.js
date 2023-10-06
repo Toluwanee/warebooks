@@ -8,14 +8,23 @@ import bodyParser from 'body-parser';
 import multer from 'multer';
 import path from 'path';
 import { Sequelize, DataTypes } from 'sequelize';
+import { fileURLToPath } from 'url';  // Importing fileURLToPath function
+import { dirname } from 'path';  // Importing dirname function
+
+const __filename = fileURLToPath(import.meta.url);  // Using fileURLToPath to get the current file's path
+const __dirname = dirname(__filename);  // Using dirname to get the directory name
+
 
 const connectionString = 'postgres://judeohiani:80piHgOFthEd@ep-mute-mountain-00610853.us-east-2.aws.neon.tech/uploaded_books';
 
 const sequelize = new Sequelize(connectionString, {
   dialect: 'postgres',
-  ssl: {
-    rejectUnauthorized: false,
-  },
+  ssl: true, // Set SSL to true to require a secure connection
+  dialectOptions: {
+    ssl: {
+      require: true, // Additional SSL options
+      rejectUnauthorized: false, // Only use this option for development or debugging; don't use in a production environment
+    }},
 });
 
 
@@ -45,6 +54,16 @@ const Book = sequelize.define('books', {
   overview: DataTypes.STRING,
   file_path: DataTypes.STRING,
   cover_path: DataTypes.STRING,
+  // createdAt: {
+  //   type: DataTypes.DATE,
+  //   allowNull: false,
+  //   defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
+  // },
+  // updatedAt: {
+  //   type: DataTypes.DATE,
+  //   allowNull: false,
+  //   defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
+  // },
 });
 
 app.post('/api/upload-book', upload.fields([{ name: 'file' }, { name: 'bookCover' }]), async (req, res) => {
@@ -61,7 +80,7 @@ app.post('/api/upload-book', upload.fields([{ name: 'file' }, { name: 'bookCover
      // Construct file paths
      const file_path = path.join(__dirname, '..', 'uploads', file.filename);
      const cover_path = path.join(__dirname, '..', 'uploads', bookCover.filename); // Use __dirname to get the correct path
-
+    
     await sequelize.sync();
     await Book.create({
       title: bookTitle,
