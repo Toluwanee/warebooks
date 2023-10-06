@@ -4,13 +4,108 @@ import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import sql from "./db.js";
 import bookData  from './data/BookData.js';
+import bodyParser from 'body-parser';
+import multer from 'multer';
+import path from 'path';
+import { Sequelize, DataTypes } from 'sequelize';
+import { fileURLToPath } from 'url';  // Importing fileURLToPath function
+import { dirname } from 'path';  // Importing dirname function
+
+const __filename = fileURLToPath(import.meta.url);  // Using fileURLToPath to get the current file's path
+const __dirname = dirname(__filename);  // Using dirname to get the directory name
+
+
+const connectionString = 'postgres://judeohiani:80piHgOFthEd@ep-mute-mountain-00610853.us-east-2.aws.neon.tech/uploaded_books';
+
+const sequelize = new Sequelize(connectionString, {
+  dialect: 'postgres',
+  ssl: true, // Set SSL to true to require a secure connection
+  dialectOptions: {
+    ssl: {
+      require: true, // Additional SSL options
+      rejectUnauthorized: false, // Only use this option for development or debugging; don't use in a production environment
+    }},
+});
+
 
 const app = express();
 const port = process.env.SERVER_PORT || 5001;
 
 //middleware
-app.use(cors({origin:["http://localhost:5173"]}));
+app.use(cors({origin:["http://localhost:5173", 'http://localhost:5174']}));
 app.use(express.json());
+
+app.use(bodyParser.json());
+
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, 'uploads/');
+  },
+  filename: (req, file, cb) => {
+    cb(null, Date.now() + '-' + file.originalname);
+  },
+});
+
+const upload = multer({ storage: storage });
+
+const Book = sequelize.define('books', {
+  title: DataTypes.STRING,
+  author: DataTypes.STRING,
+  overview: DataTypes.STRING,
+  file_path: DataTypes.STRING,
+  cover_path: DataTypes.STRING,
+  // createdAt: {
+  //   type: DataTypes.DATE,
+  //   allowNull: false,
+  //   defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
+  // },
+  // updatedAt: {
+  //   type: DataTypes.DATE,
+  //   allowNull: false,
+  //   defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
+  // },
+});
+
+app.post('/api/upload-book', upload.fields([{ name: 'file' }, { name: 'bookCover' }]), async (req, res) => {
+  const { bookTitle, authorName, bookOverview } = req.body;
+  const file = req.files.file[0];
+  const bookCover = req.files.bookCover[0];
+
+  console.log("I am a warrior");
+  console.log(file);
+  console.log(bookCover);
+  console.log(bookTitle);
+
+  try {
+     // Construct file paths
+     const file_path = path.join(__dirname, '..', 'uploads', file.filename);
+     const cover_path = path.join(__dirname, '..', 'uploads', bookCover.filename); // Use __dirname to get the correct path
+    
+    await sequelize.sync();
+    await Book.create({
+      title: bookTitle,
+      author: authorName,
+      overview: bookOverview,
+      file_path,
+      cover_path,
+    });
+
+    res.status(201).send('Book uploaded successfully');
+  } catch (error) {
+    console.error('Error uploading book:', error);
+    res.status(500).send('Error uploading book');
+  }
+});
+
+app.get('/api/my-books', async (req, res) => {
+  try {
+    const books = await Book.findAll();
+    res.json(books);
+  } catch (error) {
+    console.error('Error fetching books:', error);
+    res.status(500).send('Error fetching books');
+  }
+});
 
 app.get('/api/books', (req, res) => {
     res.json(bookData);

@@ -43,7 +43,7 @@ function PublishPage() {
     formData.append("bookCover", bookCover);
 
     // Make a POST request to upload the book and its details to the server
-    fetch("http://localhost:3000/api/upload-book", {
+    fetch("http://localhost:5001/api/upload-book", {
       method: "POST",
       body: formData,
     })
@@ -72,12 +72,12 @@ function PublishPage() {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="bg-white p-8 rounded-lg shadow-md w-96">
+      <div className="bg-white p-8 rounded-lg shadow-md w-96 text-left">
         <h2 className="text-2xl font-semibold mb-4">Publish Your Book</h2>
         {successMessage && <div className="text-green-600 mb-4">{successMessage}</div>}
         {errorMessage && <div className="text-red-600 mb-4">{errorMessage}</div>}
         <div className="mb-4">
-          <label className="block text-sm font-medium text-gray-700">
+          <label className="block text-sm font-medium text-gray-700 text-left">
             Book Title
           </label>
           <input
@@ -88,7 +88,7 @@ function PublishPage() {
           />
         </div>
         <div className="mb-4">
-          <label className="block text-sm font-medium text-gray-700">
+          <label className="block text-sm font-medium text-gray-700 text-left">
             Author Name
           </label>
           <input
@@ -99,7 +99,7 @@ function PublishPage() {
           />
         </div>
         <div className="mb-4">
-          <label className="block text-sm font-medium text-gray-700">
+          <label className="block text-sm font-medium text-gray-700 text-left">
             Brief Overview of Book
           </label>
           <input
@@ -110,7 +110,7 @@ function PublishPage() {
           />
         </div>
         <div className="mb-4">
-          <label className="block text-sm font-medium text-gray-700">
+          <label className="block text-sm font-medium text-gray-700 text-left">
             Upload Book (PDF)
           </label>
           <input
@@ -123,7 +123,7 @@ function PublishPage() {
           />
         </div>
         <div className="mb-4">
-          <label className="block text-sm font-medium text-gray-700">
+          <label className="block text-sm font-medium text-gray-700 text-left">
             Upload Book Cover (.jpg format)
           </label>
           <input
