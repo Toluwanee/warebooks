@@ -1,4 +1,3 @@
-import React from 'react'
 import classNames from 'classnames'
 import {FcBookmark } from 'react-icons/fc'
 import { DASHBOARD_SIDEBAR_LINKS, DASHBOARD_SIDEBAR_BOTTOM_LINKS } from '../../../../lib/constants/navigation'

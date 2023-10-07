@@ -114,7 +114,7 @@ const LibraryStatsGrid = () => {
   )
 }
 
-function BoxWrapper({ children }) {
+function BoxWrapper({children}) {
 	return <div className="bg-yellow-800 rounded-sm p-20 flex-1 border border-gray-200 flex items-center">{children}</div>
 }
 

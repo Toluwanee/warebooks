@@ -23,13 +23,13 @@ export const DASHBOARD_SIDEBAR_LINKS = [
 	{
 		key: 'mybooks',
 		label: 'My Books',
-		path: '/mybooks',
+		path: '/my-books',
 		icon: <HiFolderOpen />
 	},
 	{
 		key: 'submit',
 		label: 'New Publish',
-		path: '/customers',
+		path: '/submit-book',
 		icon: <HiOutlineCloudUpload />
 	}
 ]
