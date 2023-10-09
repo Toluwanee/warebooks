@@ -76,7 +76,7 @@ export const PrivacyPolicy = () => {
           Your Choices
           </h1>
           <p className="text-base items-start leading-normal text-left break-normal max-sm:text-sm text-black pr-5 pb-5">
-          You have the right to access, correct, or delete your personal information. You can also unsubscribe from promotional emails and notifications. To exercise these rights or make such changes, please contact us at hello@utilityware.co.
+          You have the right to access, correct, or delete your personal information. You can also unsubscribe from promotional emails and notifications. To exercise these rights or make such changes, please contact us at <a href="mailto: hello@utilityware.co">hello@utilityware.co</a>.
               </p>
           <h1 className="text-xl max-sm:text-sm font-bold text-black pb-4">
           Children's Privacy
@@ -97,7 +97,7 @@ export const PrivacyPolicy = () => {
           If you have any questions or concerns about this Privacy Policy or our data practices, please contact us at:
               </p>
           <p className="text-base items-start leading-normal text-left break-normal max-sm:text-sm text-black pr-5 pb-5">
-          Email: hello@utilityware.co
+          <a href="mailto: hello@utilityware.co">Email: hello@utilityware.co</a>
               </p>
           <p className="text-base items-start leading-normal text-left break-normal max-sm:text-sm text-black pr-5 pb-5">
           We appreciate your trust in Utility Ware Ltd and Ware Book. Your privacy is important to us, and we are committed to maintaining the highest standards of data protection.

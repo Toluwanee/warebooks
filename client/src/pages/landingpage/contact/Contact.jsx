@@ -11,10 +11,10 @@ export const Contact = () => {
         below:
       </p>
       <p className="text-base items-start leading-normal text-left break-normal max-sm:text-sm text-black pr-5 pb-5">
-        Email: hello@utilityware.co
+        <a href="mailto: hello@utilityware.co">Email: hello@utilityware.co</a>
       </p>
       <p className="text-base items-start leading-normal text-left break-normal max-sm:text-sm text-black pr-5 pb-5">
-        Phone: +234 70 1312 3835
+        <a href="tel: +234 701 312 3835">Phone: +234 701 312 3835</a>
       </p>
       <p className="text-base items-start leading-normal text-left break-normal max-sm:text-sm text-black pr-5 pb-5">
         Our team is dedicated to providing prompt and helpful assistance.
